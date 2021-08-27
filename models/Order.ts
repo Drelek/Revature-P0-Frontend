@@ -1,17 +1,17 @@
 export interface IOrder {
-  receipt: number;
+  receipt?: number;
   user: string;
   items: number[];
-  total: number;
-  timestamp: string;
+  total?: number;
+  timestamp?: string;
 }
 
 export class Order implements IOrder {
-  public receipt: number;
+  public receipt?: number;
   public user: string;
   public items: number[];
-  public total: number;
-  public timestamp: string;
+  public total?: number;
+  public timestamp?: string;
 
   constructor(input: any) {
     this.receipt = input.receipt;

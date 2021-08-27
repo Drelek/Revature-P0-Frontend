@@ -1,17 +1,10 @@
-import User from '../models/User';
-import Item from '../models/Item';
-import Order from '../models/Order';
+import { applyMiddleware, createStore } from 'redux';
+import rootReducer from './reducers/RootReducer';
+import createSagaMiddleware from '@redux-saga/core';
+import rootSaga from './sagas/RootSaga';
 
-export interface IAppState {
-  user?: User;
-  items?: Item[];
-  orders?: Order[];
-  loading: boolean;
-}
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
 
-export const initialState: IAppState = {
-  user: undefined,
-  items: undefined,
-  orders: undefined,
-  loading: false,
-};
+export default store;
