@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -21,6 +22,7 @@ export default function App() {
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>
+        <Toast ref={(ref) => Toast.setRef(ref)} />
       </Provider>
     );
   }

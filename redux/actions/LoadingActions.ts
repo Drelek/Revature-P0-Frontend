@@ -1,3 +1,5 @@
+import { Action } from './RootAction';
+
 export enum LoadingActionTypes {
   LOADING = 'Loading...',
   LOADED = 'Completed',
@@ -7,10 +9,10 @@ export interface ILoadingAction {
   type: LoadingActionTypes;
 }
 
-export class BeginLoadingAction implements ILoadingAction {
+export class BeginLoadingAction extends Action implements ILoadingAction {
   public type = LoadingActionTypes.LOADING;
 }
 
-export class FinishLoadingAction implements ILoadingAction {
+export class FinishLoadingAction extends Action implements ILoadingAction {
   public type = LoadingActionTypes.LOADED;
 }

@@ -1,4 +1,5 @@
 import Item from '../../models/Item';
+import { Action } from './RootAction';
 
 export enum ItemActionTypes {
   GET_ALL = 'Get all items',
@@ -12,54 +13,59 @@ export enum ItemActionTypes {
 
 export interface IItemAction {
   type: ItemActionTypes;
-  payload?: Item | Item[] | number | string;
+  payload?: any;
 }
 
-export class GetAllItemsAction implements IItemAction {
+export class GetAllItemsAction extends Action implements IItemAction {
   public type = ItemActionTypes.GET_ALL;
 }
 
-export class CreateItemAction implements IItemAction {
+export class CreateItemAction extends Action implements IItemAction {
   public type = ItemActionTypes.CREATE;
-  public payload: Item;
+  public payload: { item: Item; apiKey: string };
 
-  constructor(item: Item) {
-    this.payload = item;
+  constructor(item: Item, apiKey: string) {
+    super();
+    this.payload = { item, apiKey };
   }
 }
 
-export class GetTaggedItemsAction implements IItemAction {
+export class GetTaggedItemsAction extends Action implements IItemAction {
   public type = ItemActionTypes.GET_TAGGED;
   public payload: string;
 
   constructor(tag: string) {
+    super();
     this.payload = tag;
   }
 }
 
-export class UpdateItemAction implements IItemAction {
+export class UpdateItemAction extends Action implements IItemAction {
   public type = ItemActionTypes.UPDATE;
-  public payload: Item;
+  public payload: { item: Item; apiKey: string };
 
-  constructor(item: Item) {
-    this.payload = item;
+  constructor(item: Item, apiKey: string) {
+    super();
+    this.payload = { item, apiKey };
   }
 }
 
-export class DeleteItemAction implements IItemAction {
+export class DeleteItemAction extends Action implements IItemAction {
   public type = ItemActionTypes.DELETE;
-  public payload: number;
+  public payload: { id: number; apiKey: string };
 
-  constructor(itemId: number) {
-    this.payload = itemId;
+  constructor(id: number, apiKey: string) {
+    super();
+    this.payload = { id, apiKey };
   }
 }
 
-export class UpdateStoredItemsAction implements IItemAction {
+export class UpdateStoredItemsAction extends Action implements IItemAction {
   public type = ItemActionTypes.UPDATE_STORE;
   public payload: Item[];
 
   constructor(items: Item[]) {
+    super();
     this.payload = items;
   }
 }

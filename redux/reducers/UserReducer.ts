@@ -6,6 +6,7 @@ const initialState: IUser = {
   firstName: undefined,
   lastName: undefined,
   email: undefined,
+  admin: undefined,
 };
 
 export default function userReducer(

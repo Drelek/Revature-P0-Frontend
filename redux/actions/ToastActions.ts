@@ -1,4 +1,5 @@
 import { IToastOptions } from '../../models/Toast';
+import { Action } from './RootAction';
 
 export enum ToastActionTypes {
   DISPLAY = 'Display toast',
@@ -9,8 +10,10 @@ export interface IToastAction {
   payload: IToastOptions;
 }
 
-export class ToastAction implements IToastAction {
+export class ToastAction extends Action implements IToastAction {
   public type = ToastActionTypes.DISPLAY;
 
-  constructor(public payload: IToastOptions) {}
+  constructor(public payload: IToastOptions) {
+    super();
+  }
 }

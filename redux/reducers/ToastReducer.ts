@@ -1,3 +1,4 @@
+import Toast from 'react-native-toast-message';
 import { IToastOptions } from '../../models/Toast';
 import { IToastAction, ToastActionTypes } from '../actions/ToastActions';
 
@@ -7,6 +8,7 @@ export default function toastReducer(
 ) {
   switch (action.type) {
     case ToastActionTypes.DISPLAY:
+      if (action.payload.type !== null) Toast.show(action.payload as any);
       return action.payload;
     default:
       return state;

@@ -1,4 +1,5 @@
 import User, { IUser } from '../../models/User';
+import { Action } from './RootAction';
 
 export enum UserActionTypes {
   LOGIN = 'Login',
@@ -14,47 +15,51 @@ export interface IUserAction {
   payload: IUser | string;
 }
 
-export class LoginAction implements IUserAction {
+export class LoginAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: string;
 
   constructor(apiKey: string) {
+    super();
     this.type = UserActionTypes.LOGIN;
     this.payload = apiKey;
   }
 }
 
-export class CreateUserAction implements IUserAction {
+export class CreateUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: User;
 
   constructor(user: User) {
+    super();
     this.type = UserActionTypes.CREATE;
     this.payload = user;
   }
 }
 
-export class UpdateUserAction implements IUserAction {
+export class UpdateUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: User;
 
   constructor(newUser: User) {
+    super();
     this.type = UserActionTypes.UPDATE;
     this.payload = newUser;
   }
 }
 
-export class DeleteUserAction implements IUserAction {
+export class DeleteUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: string;
 
   constructor(apiKey: string) {
+    super();
     this.type = UserActionTypes.DELETE;
     this.payload = apiKey;
   }
 }
 
-export class PromoteUserAction implements IUserAction {
+export class PromoteUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: {
     apiKey: string;
@@ -62,6 +67,7 @@ export class PromoteUserAction implements IUserAction {
   };
 
   constructor(apiKey: string, promoteKey: string) {
+    super();
     this.type = UserActionTypes.PROMOTE;
     this.payload = {
       apiKey,
@@ -70,11 +76,12 @@ export class PromoteUserAction implements IUserAction {
   }
 }
 
-export class UpdateStoredUserAction implements IUserAction {
+export class UpdateStoredUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: IUser;
 
   constructor(user: IUser) {
+    super();
     this.type = UserActionTypes.UPDATE_STORE;
     this.payload = user;
   }

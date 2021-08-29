@@ -1,19 +1,38 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { RootStore } from '../redux/store';
+import { FlatList, RefreshControl, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { GetAllItemsAction } from '../redux/actions/ItemActions';
+import Item from '../models/Item';
+import ItemCard from '../components/ItemCard';
 
 export default function ItemsScreen() {
+  const items: Item[] = useSelector((state: RootStore) => state.items);
+  const refreshing = useSelector((state: RootStore) => state.loading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    refresh();
+  }, []);
+
+  function refresh() {
+    dispatch(new GetAllItemsAction().toPlainObject());
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Items</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+      <FlatList
+        data={items}
+        renderItem={({ item }) => <ItemCard name={item.name} />}
+        keyExtractor={(item) => String(item.id)}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+        }
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
     </View>
   );
 }
