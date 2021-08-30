@@ -9,6 +9,7 @@ import { StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import EditScreenInfo from '../components/EditScreenInfo';
+import KeyCard from '../components/KeyCard';
 import LoginCard from '../components/LoginCard';
 import PromoteCard from '../components/PromoteCard';
 import { Text, View } from '../components/Themed';
@@ -31,6 +32,7 @@ export default function UserScreen({ navigation }: RootTabScreenProps<'User'>) {
         {!user.apiKey && <LoginCard />}
         {user.apiKey && <UserCard />}
         {user.admin && <PromoteCard />}
+        {user.apiKey && <KeyCard />}
       </ScrollView>
     </SafeAreaView>
   );
