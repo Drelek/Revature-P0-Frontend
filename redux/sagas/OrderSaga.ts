@@ -59,7 +59,9 @@ function* getAllOrders(
     const response = yield call(axios.get, action.payload);
     if (!response.data.success) throw response.data;
     yield put(
-      new UpdateStoredOrdersAction(response.data.data.orders).toPlainObject()
+      new UpdateStoredOrdersAction(
+        response.data.data.orders.reverse()
+      ).toPlainObject()
     );
   } catch (err) {
     yield put(

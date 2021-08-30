@@ -16,7 +16,6 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/UserScreen';
 import TabTwoScreen from '../screens/ItemsScreen';
@@ -29,6 +28,8 @@ import {
 import LinkingConfiguration from './LinkingConfiguration';
 import EditItemScreen from '../screens/EditItemScreen';
 import AddItemScreen from '../screens/AddItemScreen';
+import PlaceOrderScreen from '../screens/PlaceOrderScreen';
+import { Icon } from 'react-native-elements';
 
 export default function Navigation({
   colorScheme,
@@ -65,9 +66,21 @@ function RootNavigator() {
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-        <Stack.Screen name="EditItem" component={EditItemScreen} />
-        <Stack.Screen name="AddItem" component={AddItemScreen} />
+        <Stack.Screen
+          name="Edit Item"
+          component={EditItemScreen}
+          options={{ headerTitleAlign: 'center' }}
+        />
+        <Stack.Screen
+          name="Add Item"
+          component={AddItemScreen}
+          options={{ headerTitleAlign: 'center' }}
+        />
+        <Stack.Screen
+          name="Place Order"
+          component={PlaceOrderScreen}
+          options={{ headerTitleAlign: 'center' }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -94,22 +107,8 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'User'>) => ({
           title: 'User',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          tabBarIcon: ({ color }) => <Icon name="person" color={color} />,
+          headerTitleAlign: 'center',
         })}
       />
       <BottomTab.Screen
@@ -117,7 +116,8 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Items',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="storefront" color={color} />,
+          headerTitleAlign: 'center',
         }}
       />
       <BottomTab.Screen
@@ -125,7 +125,8 @@ function BottomTabNavigator() {
         component={TabThreeScreen}
         options={{
           title: 'Orders',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="shop" color={color} />,
+          headerTitleAlign: 'center',
         }}
       />
     </BottomTab.Navigator>

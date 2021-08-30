@@ -53,7 +53,7 @@ export default function ItemsScreen({
           placement="right"
           color="teal"
           icon={<Icon name="add" color="white" />}
-          onPress={() => navigation.navigate('AddItem')}
+          onPress={() => navigation.navigate('Add Item')}
         />
       )}
     </SafeAreaView>

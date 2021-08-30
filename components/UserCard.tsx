@@ -8,7 +8,7 @@ import {
   UpdateUserAction,
 } from '../redux/actions/UserActions';
 import { RootStore } from '../redux/store';
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Card, Input, Button } from 'react-native-elements';
 
 export default function UserCard() {
@@ -60,9 +60,32 @@ export default function UserCard() {
         placeholder={user.email}
         autoCapitalize="none"
       />
-      <Button title="Update Info" onPress={updateUser} />
-      <Button title="Delete User" onPress={deleteUser} />
-      <Button title="Sign Out" onPress={logout} />
+      <View style={styles.buttonContainer}>
+        <Button
+          buttonStyle={styles.button}
+          title="Update Info"
+          onPress={updateUser}
+        />
+        <Button
+          buttonStyle={styles.button}
+          title="Delete User"
+          onPress={deleteUser}
+        />
+        <Button buttonStyle={styles.button} title="Sign Out" onPress={logout} />
+      </View>
     </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+  },
+  button: {
+    marginLeft: 5,
+    marginRight: 5,
+    minWidth: '32%',
+  },
+});

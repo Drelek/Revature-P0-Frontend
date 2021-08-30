@@ -1,12 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { useEffect } from 'react';
 import {
   FlatList,
   RefreshControl,
   SafeAreaView,
-  ScrollView,
+  View,
   StyleSheet,
 } from 'react-native';
+import { FAB, Icon, Card } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderCard from '../components/OrderCard';
 import { Order } from '../models/Order';
@@ -19,6 +21,7 @@ export default function OrdersScreen() {
   const refreshing = useSelector((state: RootStore) => state.loading);
   const user: IUser = useSelector((state: RootStore) => state.user);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   function refresh() {
     dispatch(new GetAllOrdersAction(user.apiKey || '').toPlainObject());
@@ -30,6 +33,11 @@ export default function OrdersScreen() {
 
   return (
     <SafeAreaView>
+      {!user.apiKey && (
+        <Card>
+          <Card.Title>Please sign in to view or place orders.</Card.Title>
+        </Card>
+      )}
       <FlatList
         data={orders}
         renderItem={({ item }) => <OrderCard item={item} />}
@@ -37,7 +45,17 @@ export default function OrdersScreen() {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={refresh} />
         }
+        style={styles.base}
+        ListFooterComponent={<View style={{ height: 90 }} />}
       />
+      {user.apiKey && (
+        <FAB
+          placement="right"
+          color="teal"
+          icon={<Icon name="add" color="white" />}
+          onPress={() => navigation.navigate('Place Order')}
+        />
+      )}
     </SafeAreaView>
   );
 }
@@ -56,5 +74,8 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
+  },
+  base: {
+    minHeight: '100%',
   },
 });
