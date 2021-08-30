@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { IItem } from './models/Item';
 
 declare global {
   namespace ReactNavigation {
@@ -19,6 +20,8 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
+  EditItem: undefined;
+  AddItem: undefined;
   NotFound: undefined;
 };
 
@@ -29,6 +32,8 @@ export type RootTabParamList = {
   User: undefined;
   Items: undefined;
   Orders: undefined;
+  EditItem: undefined;
+  AddItem: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

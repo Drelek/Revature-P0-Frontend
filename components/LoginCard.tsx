@@ -3,7 +3,8 @@ import { Pressable, TextInput, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import User from '../models/User';
 import { CreateUserAction, LoginAction } from '../redux/actions/UserActions';
-import { View, Text } from './Themed';
+import { View, Text } from 'react-native';
+import { Button, Card, Input } from 'react-native-elements';
 
 export default function LoginCard() {
   const dispatch = useDispatch();
@@ -24,41 +25,39 @@ export default function LoginCard() {
 
   return (
     <View>
-      <View>
-        <Text>Create an account</Text>
-        <TextInput
+      <Card>
+        <Card.Title>Create an account</Card.Title>
+        <Card.Divider />
+        <Input
           onChangeText={(text) =>
             setLoginInfo({ ...loginInfo, firstName: text })
           }
           placeholder="First Name"
         />
-        <TextInput
+        <Input
           onChangeText={(text) =>
             setLoginInfo({ ...loginInfo, lastName: text })
           }
           placeholder="Last Name"
         />
-        <TextInput
+        <Input
           onChangeText={(text) => setLoginInfo({ ...loginInfo, email: text })}
           placeholder="Email"
           autoCapitalize="none"
         />
-        <TouchableOpacity onPress={createUser}>
-          <Text>Create Account</Text>
-        </TouchableOpacity>
-      </View>
+        <Button title="Create Account" onPress={createUser} />
+      </Card>
 
-      <View>
-        <Text>Already have an API key? Enter it here</Text>
-        <TextInput
+      <Card>
+        <Card.Title>Already have an API key? Enter it here</Card.Title>
+        <Card.Divider />
+        <Input
           onChangeText={(text) => setLoginInfo({ ...loginInfo, apiKey: text })}
           placeholder="API Key"
           autoCapitalize="none"
         />
-        <TouchableOpacity onPress={login}>
-          <Text>Login</Text>
-        </TouchableOpacity>
-      </View>
+        <Button title="Login" onPress={login} />
+      </Card>
     </View>
   );
 }

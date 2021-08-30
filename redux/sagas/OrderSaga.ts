@@ -49,11 +49,18 @@ function* placeOrder(
 function* getAllOrders(
   action: GetAllOrdersAction
 ): Generator<unknown, any, AxiosResponse> {
+  if (!action.payload) {
+    yield put(new UpdateStoredOrdersAction([]).toPlainObject());
+    return;
+  }
+
   yield put(new BeginLoadingAction().toPlainObject());
   try {
     const response = yield call(axios.get, action.payload);
     if (!response.data.success) throw response.data;
-    yield put(new UpdateStoredOrdersAction(response.data.data.orders));
+    yield put(
+      new UpdateStoredOrdersAction(response.data.data.orders).toPlainObject()
+    );
   } catch (err) {
     yield put(
       new ToastAction({

@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import User, { IUser } from '../models/User';
 import {
   DeleteUserAction,
+  UpdateStoredUserAction,
   UpdateUserAction,
 } from '../redux/actions/UserActions';
 import { RootStore } from '../redux/store';
-import { Text, View } from './Themed';
+import { Text, View } from 'react-native';
+import { Card, Input, Button } from 'react-native-elements';
 
 export default function UserCard() {
   const dispatch = useDispatch();
@@ -30,32 +32,37 @@ export default function UserCard() {
     dispatch(new DeleteUserAction(user.apiKey || '').toPlainObject());
   }
 
+  function logout() {
+    dispatch(new UpdateStoredUserAction({}).toPlainObject());
+  }
+
   return (
-    <View>
-      <Text>Welcome, {user.firstName}</Text>
-      <TextInput
+    <Card>
+      <Card.Title>Welcome, {user.firstName}</Card.Title>
+      <Card.Divider />
+      <Input
+        label="First Name:"
         onChangeText={(text) =>
           setUpdatedInfo({ ...updatedInfo, firstName: text })
         }
         placeholder={user.firstName}
       />
-      <TextInput
+      <Input
+        label="Last Name:"
         onChangeText={(text) =>
           setUpdatedInfo({ ...updatedInfo, lastName: text })
         }
         placeholder={user.lastName}
       />
-      <TextInput
+      <Input
+        label="Email:"
         onChangeText={(text) => setUpdatedInfo({ ...updatedInfo, email: text })}
         placeholder={user.email}
         autoCapitalize="none"
       />
-      <TouchableOpacity onPress={updateUser}>
-        <Text>Update Info</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={deleteUser}>
-        <Text>Delete User</Text>
-      </TouchableOpacity>
-    </View>
+      <Button title="Update Info" onPress={updateUser} />
+      <Button title="Delete User" onPress={deleteUser} />
+      <Button title="Sign Out" onPress={logout} />
+    </Card>
   );
 }

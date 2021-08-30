@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import LoginCard from '../components/LoginCard';
+import PromoteCard from '../components/PromoteCard';
 import { Text, View } from '../components/Themed';
 import UserCard from '../components/UserCard';
 import { IUser } from '../models/User';
@@ -22,9 +23,14 @@ export default function UserScreen({ navigation }: RootTabScreenProps<'User'>) {
 
   return (
     <SafeAreaView>
-      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} />}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} enabled={false} />
+        }
+      >
         {!user.apiKey && <LoginCard />}
         {user.apiKey && <UserCard />}
+        {user.admin && <PromoteCard />}
       </ScrollView>
     </SafeAreaView>
   );

@@ -27,6 +27,8 @@ import {
   RootTabScreenProps,
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import EditItemScreen from '../screens/EditItemScreen';
+import AddItemScreen from '../screens/AddItemScreen';
 
 export default function Navigation({
   colorScheme,
@@ -64,6 +66,8 @@ function RootNavigator() {
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="EditItem" component={EditItemScreen} />
+        <Stack.Screen name="AddItem" component={AddItemScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );

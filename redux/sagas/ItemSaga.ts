@@ -98,6 +98,7 @@ function* updateItem(
     const response = yield call(axios.put, '', {
       apiKey: action.payload.apiKey,
       item: action.payload.item,
+      id: action.payload.item.id,
     });
     if (!response.data.success) throw response.data;
     yield put(
@@ -109,6 +110,7 @@ function* updateItem(
     );
     yield put(new GetAllItemsAction().toPlainObject());
   } catch (err) {
+    console.log(err.response);
     yield put(
       new ToastAction({
         type: 'error',
@@ -130,6 +132,13 @@ function* deleteItem(
       url: `${API_URL}`,
       data: action.payload,
     });
+    yield put(
+      new ToastAction({
+        type: 'success',
+        text1: 'Item deleted successfully',
+      }).toPlainObject()
+    );
+    yield put(new GetAllItemsAction().toPlainObject());
   } catch (err) {
     yield put(
       new ToastAction({

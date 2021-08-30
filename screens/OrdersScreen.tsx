@@ -1,20 +1,44 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { useEffect } from 'react';
+import {
+  FlatList,
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import OrderCard from '../components/OrderCard';
+import { Order } from '../models/Order';
+import { IUser } from '../models/User';
+import { GetAllOrdersAction } from '../redux/actions/OrderActions';
+import { RootStore } from '../redux/store';
 
 export default function OrdersScreen() {
+  const orders: Order[] = useSelector((state: RootStore) => state.orders);
+  const refreshing = useSelector((state: RootStore) => state.loading);
+  const user: IUser = useSelector((state: RootStore) => state.user);
+  const dispatch = useDispatch();
+
+  function refresh() {
+    dispatch(new GetAllOrdersAction(user.apiKey || '').toPlainObject());
+  }
+
+  useEffect(() => {
+    refresh();
+  }, [user]);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Orders</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+    <SafeAreaView>
+      <FlatList
+        data={orders}
+        renderItem={({ item }) => <OrderCard item={item} />}
+        keyExtractor={(item) => String(item.receipt)}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+        }
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
-    </View>
+    </SafeAreaView>
   );
 }
 
