@@ -6,6 +6,7 @@
 
 import { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
+import Logo from '../assets/Logo';
 
 import { RootStackParamList } from '../types';
 
@@ -17,6 +18,7 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           User: {
             screens: {
+              
               UserScreen: 'user',
             },
           },

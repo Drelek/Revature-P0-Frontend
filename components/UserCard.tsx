@@ -37,25 +37,28 @@ export default function UserCard() {
   }
 
   return (
-    <Card>
+    <Card containerStyle={styles.loginCard} wrapperStyle={styles.cardItems}>
       <Card.Title>Welcome, {user.firstName}</Card.Title>
       <Card.Divider />
-      <Input
+      <Input inputStyle={styles.inputs}
         label="First Name:"
+        labelStyle={styles.label}
         onChangeText={(text) =>
           setUpdatedInfo({ ...updatedInfo, firstName: text })
         }
         placeholder={user.firstName}
       />
-      <Input
+      <Input inputStyle={styles.inputs}
         label="Last Name:"
+        labelStyle={styles.label}
         onChangeText={(text) =>
           setUpdatedInfo({ ...updatedInfo, lastName: text })
         }
         placeholder={user.lastName}
       />
-      <Input
+      <Input inputStyle={styles.inputs}
         label="Email:"
+        labelStyle={styles.label}
         onChangeText={(text) => setUpdatedInfo({ ...updatedInfo, email: text })}
         placeholder={user.email}
         autoCapitalize="none"
@@ -78,14 +81,65 @@ export default function UserCard() {
 }
 
 const styles = StyleSheet.create({
+  loginCard:{
+    backgroundColor: '#fffffe',
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 5,
+
+  },
+  cardItems:{
+    
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 1,
+
+  },
   buttonContainer: {
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'center',
   },
-  button: {
-    marginLeft: 5,
-    marginRight: 5,
-    minWidth: '32%',
+  inputs:{
+    
+    fontSize:14,
+    padding:5,
+    backgroundColor: '#fffffe',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 2,
+    
+
   },
+  button: {
+    backgroundColor:'#123456',
+    borderRadius:8,
+    margin:5,
+    minWidth: '30%',
+  },
+  label:{
+    color:'#123456'
+  }
 });

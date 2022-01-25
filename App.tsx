@@ -19,7 +19,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
+          <Navigation colorScheme={colorScheme}  />
           <StatusBar />
         </SafeAreaProvider>
         <Toast ref={(ref) => Toast.setRef(ref)} />

@@ -51,7 +51,7 @@ export default function ItemsScreen({
       {user.admin && (
         <FAB
           placement="right"
-          color="teal"
+          color="#123456"
           icon={<Icon name="add" color="white" />}
           onPress={() => navigation.navigate('Add Item')}
         />

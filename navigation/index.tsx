@@ -30,7 +30,7 @@ import EditItemScreen from '../screens/EditItemScreen';
 import AddItemScreen from '../screens/AddItemScreen';
 import PlaceOrderScreen from '../screens/PlaceOrderScreen';
 import { Icon } from 'react-native-elements';
-
+import Logo from'../assets/Logo';
 export default function Navigation({
   colorScheme,
 }: {
@@ -54,9 +54,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen
-        name="Root"
+        name="Root" 
+        
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
@@ -99,15 +100,17 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="User"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: Colors[colorScheme].tint, 
       }}
     >
       <BottomTab.Screen
         name="User"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'User'>) => ({
+        
           title: 'User',
           tabBarIcon: ({ color }) => <Icon name="person" color={color} />,
+          headerTitle: () => <Logo />,
           headerTitleAlign: 'center',
         })}
       />
@@ -116,7 +119,9 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Items',
+          headerTitle: () => <Logo />,
           tabBarIcon: ({ color }) => <Icon name="storefront" color={color} />,
+         
           headerTitleAlign: 'center',
         }}
       />
@@ -125,6 +130,7 @@ function BottomTabNavigator() {
         component={TabThreeScreen}
         options={{
           title: 'Orders',
+          headerTitle: () => <Logo />,
           tabBarIcon: ({ color }) => <Icon name="shop" color={color} />,
           headerTitleAlign: 'center',
         }}

@@ -25,6 +25,7 @@ export default function UserScreen({ navigation }: RootTabScreenProps<'User'>) {
   return (
     <SafeAreaView>
       <ScrollView
+        
         refreshControl={
           <RefreshControl refreshing={refreshing} enabled={false} />
         }
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
   title: {
     fontSize: 20,

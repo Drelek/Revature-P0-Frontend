@@ -34,7 +34,7 @@ export default function OrdersScreen() {
   return (
     <SafeAreaView>
       {!user.apiKey && (
-        <Card>
+        <Card containerStyle={styles.container}>
           <Card.Title>Please sign in to view or place orders.</Card.Title>
         </Card>
       )}
@@ -51,7 +51,7 @@ export default function OrdersScreen() {
       {user.apiKey && (
         <FAB
           placement="right"
-          color="teal"
+          color="#123456"
           icon={<Icon name="add" color="white" />}
           onPress={() => navigation.navigate('Place Order')}
         />
@@ -62,9 +62,18 @@ export default function OrdersScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+    backgroundColor: '#fffffe',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 15,
   },
   title: {
     fontSize: 20,
@@ -78,4 +87,6 @@ const styles = StyleSheet.create({
   base: {
     minHeight: '100%',
   },
+      
+
 });

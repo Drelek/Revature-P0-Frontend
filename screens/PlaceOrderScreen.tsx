@@ -9,7 +9,7 @@ import { IUser } from '../models/User';
 import { GetAllItemsAction } from '../redux/actions/ItemActions';
 import { PlaceOrderAction } from '../redux/actions/OrderActions';
 import { RootStore } from '../redux/store';
-
+import { StyleSheet } from 'react-native';
 export default function PlaceOrderScreen() {
   const items: IItem[] = useSelector((state: RootStore) => state.items);
   const user: IUser = useSelector((state: RootStore) => state.user);
@@ -24,16 +24,21 @@ export default function PlaceOrderScreen() {
   }, []);
 
   function placeOrder() {
-    dispatch(new PlaceOrderAction(newOrder, user.apiKey || '').toPlainObject());
+    if (newOrder.items.length==0){
+      alert("You cannot have a blank order!");
+  }else{
+     
+      dispatch(new PlaceOrderAction(newOrder, user.apiKey || '').toPlainObject());
   }
+}
 
   function onItemsChange(selectedItems: any[]) {
     setOrder({ ...newOrder, items: selectedItems });
   }
 
   return (
-    <Card>
-      <Card.Title>Place an Order</Card.Title>
+    <Card containerStyle={styles.container}>
+      <Card.Title style={styles.heading}>Create your Order</Card.Title>
       <Card.Divider />
       <MultiSelect
         items={items}
@@ -42,7 +47,58 @@ export default function PlaceOrderScreen() {
         selectText="Select Items"
         selectedItems={newOrder.items}
       />
-      <Button title="Place Order" onPress={placeOrder} />
+      <Button buttonStyle={styles.button} title="Place Order" onPress={placeOrder} />
     </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    
+    backgroundColor: '#fffffe',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 25,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: '80%',
+  },
+  base: {
+    minHeight: '100%',
+  },
+      
+  heading:{
+    color:'#fff',
+    backgroundColor:'#123456',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 1,
+    marginBottom: 1,
+    borderRadius:5,
+    padding: 10,
+  },
+  button:{
+    backgroundColor:'#123456',
+    width:"33%",
+    alignSelf:'flex-end',
+    marginRight:5,
+    marginBottom:5,
+    marginTop:25
+
+
+
+  }
+});

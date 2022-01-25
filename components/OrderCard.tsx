@@ -22,7 +22,7 @@ export default function OrderCard({ item }: { item: IOrder }) {
   }
 
   return (
-    <Card>
+    <Card containerStyle={styles.container}>
       <Card.Title>{`Placed: ${item.timestamp}`}</Card.Title>
       <Card.Divider />
       <View style={styles.row}>
@@ -38,7 +38,7 @@ export default function OrderCard({ item }: { item: IOrder }) {
         <Text style={styles.right}>${item.total}</Text>
       </View>
       {Date.now() - Number(item.receipt) < 600000 && (
-        <Button title="Cancel Order" onPress={cancelOrder} />
+        <Button buttonStyle={styles.button} title="Cancel Order" onPress={cancelOrder} />
       )}
     </Card>
   );
@@ -49,7 +49,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#abdbd0',
     marginBottom: 10,
+
     padding: 5,
+    paddingLeft:15,
+    paddingRight:15,
     borderRadius: 5,
   },
   left: {
@@ -62,4 +65,22 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     flex: 1,
   },
+  button:{
+    backgroundColor:'#8e0000',
+    alignSelf:'center',
+    margin:5,
+    borderRadius:10,
+    width:"90%",
+  },
+  container: {
+
+    backgroundColor: '#fffffe',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    margin:25,
+  }
 });

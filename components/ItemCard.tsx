@@ -28,8 +28,8 @@ export default function ItemCard({
   }
 
   return (
-    <Card>
-      <Card.Title>{item.name}</Card.Title>
+    <Card containerStyle={styles.container}> 
+      <Card.Title style={styles.heading}>{item.name}</Card.Title>
       <Card.Divider />
       <Text style={styles.subHeading}>Description:</Text>
       <Text>{item.description}</Text>
@@ -85,12 +85,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     minWidth: '40%',
+   
+   
   },
   div: {
     marginTop: 5,
   },
   subHeading: {
-    fontSize: 16,
+    color:'#123456',
+    fontSize: 14,
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 5,
@@ -98,4 +101,28 @@ const styles = StyleSheet.create({
   center: {
     justifyContent: 'center',
   },
+  container:{
+    backgroundColor: '#fff',
+    borderRadius: 9,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 15,
+
+  },
+  heading:{
+    color:'#fff',
+    backgroundColor:'#123456',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 1,
+    marginBottom: 1,
+    borderRadius:5,
+    padding: 10,
+  }
 });
