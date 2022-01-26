@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView , StyleSheet} from 'react-native';
 import { Card, Input, Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { IItem } from '../models/Item';
@@ -24,21 +24,27 @@ export default function AddItemScreen() {
 
   return (
     <ScrollView>
-      <Card>
-        <Card.Title>Add Item</Card.Title>
+      <Card containerStyle={styles.container}>
+        <Card.Title style={styles.header}>Enter New Item</Card.Title>
         <Card.Divider />
         <Input
+          inputStyle={styles.input}
+          labelStyle={styles.label}
           label="Name"
           placeholder="Item Name"
           onChangeText={(text) => setNewItem({ ...newItem, name: text })}
         />
         <Input
+          inputStyle={styles.input}
+          labelStyle={styles.label}
           label="Description"
           placeholder="Item Description"
           onChangeText={(text) => setNewItem({ ...newItem, description: text })}
           multiline={true}
         />
         <Input
+        inputStyle={styles.input}
+        labelStyle={styles.label}
           label="Price"
           placeholder="Item Price in Dollars"
           onChangeText={(text) =>
@@ -47,14 +53,68 @@ export default function AddItemScreen() {
           keyboardType="decimal-pad"
         />
         <Input
+          inputStyle={styles.input}
+          labelStyle={styles.label}
           label="Tags (separated by a comma and a space)"
           placeholder="Tags"
           onChangeText={(text) =>
             setNewItem({ ...newItem, tags: text.split(', ') })
           }
         />
-        <Button title="Add Item" onPress={addItem} />
+        <Button buttonStyle={styles.button} title="Add Item" onPress={addItem} />
       </Card>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container:{
+  backgroundColor: '#fffffe',
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 5,
+  },
+  button:{
+    backgroundColor:'#123456',
+    borderRadius:8,
+    margin:5,
+    width: '30%',
+    alignSelf:'flex-end'
+  }  ,
+  input:{
+    fontSize:14,
+    padding:5,
+    backgroundColor: '#fffffe',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 2,
+    
+  },
+  label:{
+    color:'#123456'
+  },
+  header:{
+    color:'#fff',
+    backgroundColor:'#123456',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 1,
+    marginBottom: 1,
+    borderRadius:5,
+    padding: 10,
+  }
+});
