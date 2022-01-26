@@ -53,8 +53,8 @@ export default function ItemCard({
               title="Edit"
               onPress={editItem}
             />
-            <Button
-              buttonStyle={styles.button}
+            <Button 
+              buttonStyle={styles.deleteButton}
               title="Delete"
               onPress={deleteItem}
             />
@@ -67,7 +67,7 @@ export default function ItemCard({
 
 const styles = StyleSheet.create({
   tag: {
-    backgroundColor: 'lightgray',
+    backgroundColor: '#9cb8d4',
     borderRadius: 20,
     padding: 8,
     margin: 5,
@@ -85,8 +85,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     minWidth: '40%',
-   
-   
+   backgroundColor:'#123456',
+   borderRadius:10,
+  },
+  deleteButton:
+  {
+    marginLeft: 10,
+    marginRight: 10,
+    minWidth: '40%',
+   backgroundColor:'#8e0000',
+   borderRadius:10,
   },
   div: {
     marginTop: 5,
