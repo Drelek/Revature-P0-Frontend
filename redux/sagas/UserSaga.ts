@@ -15,7 +15,7 @@ import {
   UserActionTypes,
 } from '../actions/UserActions';
 
-const API_URL = 'http://godmodelan.com/api/user/';
+const API_URL = 'http://onlineproductordering-env.eba-8kiskn5u.us-east-2.elasticbeanstalk.com/user/';
 const axios = axiosBase.create({
   baseURL: API_URL,
 });
@@ -45,7 +45,7 @@ function* createUser(
 ): Generator<unknown, any, AxiosResponse> {
   yield put(new BeginLoadingAction().toPlainObject());
   try {
-    const response = yield call(axios.post, '', { user: action.payload });
+    const response = yield call(axios.post, '', action.payload);
     if (!response.data.success) throw response.data;
     yield put(new UpdateStoredUserAction(response.data.data).toPlainObject());
   } catch (err) {
@@ -67,10 +67,11 @@ function* updateUser(
   yield put(new BeginLoadingAction().toPlainObject());
   try {
     const response = yield call(axios.put, '', {
+      ...action.payload,
       apiKey: action.payload.apiKey,
-      user: action.payload,
     });
     if (!response.data.success) throw response.data;
+    console.log(response.data.data);
     yield put(new UpdateStoredUserAction(response.data.data).toPlainObject());
   } catch (err) {
     yield put(
@@ -109,6 +110,7 @@ function* promoteUser(
 ): Generator<unknown, any, AxiosResponse> {
   yield put(new BeginLoadingAction().toPlainObject());
   try {
+    console.log(action.payload);
     const response = yield call(axios.put, '/promote/', action.payload);
     if (!response.data.success) throw response.data;
     yield put(
@@ -119,6 +121,7 @@ function* promoteUser(
       }).toPlainObject()
     );
   } catch (err) {
+    console.log(err.response);
     yield put(
       new ToastAction({
         type: 'error',

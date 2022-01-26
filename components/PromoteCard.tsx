@@ -12,7 +12,7 @@ export default function PromoteCard() {
   const [promoteKey, setPromoteKey] = useState('');
 
   function promote() {
-    dispatch(new PromoteUserAction(user.apiKey || '', promoteKey));
+    dispatch(new PromoteUserAction(user.apiKey || '', promoteKey).toPlainObject());
   }
 
   return (
