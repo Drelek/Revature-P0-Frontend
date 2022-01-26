@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Card, Input, Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { IItem } from '../models/Item';
@@ -58,3 +58,13 @@ export default function EditItemScreen({ route }: any) {
     </ScrollView>
   );
 }
+const styles = StyleSheet.create({
+  button:{
+    backgroundColor:'#123456',
+    width:"33%",
+    alignSelf:'flex-end',
+    marginRight:5,
+    marginBottom:5,
+    marginTop:25
+  }
+});

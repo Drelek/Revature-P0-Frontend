@@ -47,7 +47,7 @@ export default function OrderCard({ item }: { item: IOrder }) {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    backgroundColor: '#abdbd0',
+    backgroundColor: '#9cb8d4',
     marginBottom: 10,
 
     padding: 5,

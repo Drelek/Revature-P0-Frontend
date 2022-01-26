@@ -46,6 +46,12 @@ export default function PlaceOrderScreen() {
         onSelectedItemsChange={onItemsChange}
         selectText="Select Items"
         selectedItems={newOrder.items}
+        submitButtonColor="#123456"
+        submitButtonText="Finalize Order"
+        tagBorderColor="#123456"
+        tagTextColor="#123456"
+        selectedItemTextColor="#8e0000"
+        selectedItemIconColor="#8e0000"
       />
       <Button buttonStyle={styles.button} title="Place Order" onPress={placeOrder} />
     </Card>

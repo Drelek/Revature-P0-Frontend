@@ -70,7 +70,8 @@ export default function UserCard() {
           onPress={updateUser}
         />
         <Button
-          buttonStyle={styles.button}
+
+          buttonStyle={styles.deleteButton}
           title="Delete User"
           onPress={deleteUser}
         />
@@ -114,6 +115,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'center',
+  },
+  deleteButton:{
+    backgroundColor:'#8e0000',
+    borderRadius:8,
+    margin:5,
+    minWidth: '30%',
   },
   inputs:{
     
