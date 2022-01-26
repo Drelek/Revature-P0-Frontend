@@ -84,7 +84,7 @@ export default function UserCard() {
 const styles = StyleSheet.create({
   loginCard:{
     backgroundColor: '#fffffe',
-    borderRadius: 15,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   cardItems:{
     
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   deleteButton:{
     backgroundColor:'#8e0000',
-    borderRadius:8,
+    borderRadius:10,
     margin:5,
     minWidth: '30%',
   },
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     padding:5,
     backgroundColor: '#fffffe',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

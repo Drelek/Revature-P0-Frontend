@@ -33,7 +33,7 @@ export default function PromoteCard() {
 const styles = StyleSheet.create({
   container:{
   backgroundColor: '#fffffe',
-    borderRadius: 15,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   button:{
     backgroundColor:'#123456',
-    borderRadius:8,
+    borderRadius:10,
     margin:5,
     minWidth: '30%',
   }  ,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     padding:5,
     backgroundColor: '#fffffe',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

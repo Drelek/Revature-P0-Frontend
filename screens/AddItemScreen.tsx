@@ -70,7 +70,7 @@ export default function AddItemScreen() {
 const styles = StyleSheet.create({
   container:{
   backgroundColor: '#fffffe',
-    borderRadius: 15,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   button:{
     backgroundColor:'#123456',
-    borderRadius:8,
+    borderRadius:10,
     margin:5,
     width: '30%',
     alignSelf:'flex-end'
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     padding:5,
     backgroundColor: '#fffffe',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 1,
     marginBottom: 1,
-    borderRadius:5,
+    borderRadius:10,
     padding: 10,
   }
 });

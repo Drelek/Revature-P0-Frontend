@@ -83,12 +83,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 1,
     marginBottom: 1,
-    borderRadius:5,
+    borderRadius:10,
     padding: 10,
   },
   container:{
     backgroundColor: '#fffffe',
-      borderRadius: 15,
+      borderRadius: 10,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       fontSize:14,
       padding:5,
       backgroundColor: '#fffffe',
-      borderRadius: 5,
+      borderRadius: 10,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,

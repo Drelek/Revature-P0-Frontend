@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   container:{
-    backgroundColor: '#fffffe',
+    backgroundColor: '#fff',
     borderRadius: 5,
     shadowColor: '#000',
     shadowOffset: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    margin: 5,
+    margin: 1,
 
   }
 });

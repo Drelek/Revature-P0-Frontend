@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft:15,
     paddingRight:15,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   left: {
     textAlignVertical: 'center',
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   container: {
 
     backgroundColor: '#fffffe',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

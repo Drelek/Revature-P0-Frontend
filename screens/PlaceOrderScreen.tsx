@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   container: {
     
     backgroundColor: '#fffffe',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 1,
     marginBottom: 1,
-    borderRadius:5,
+    borderRadius:10,
     padding: 10,
   },
   button:{
