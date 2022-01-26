@@ -14,7 +14,7 @@ import {
 import axiosBase from 'axios';
 import { ToastAction } from '../actions/ToastActions';
 
-const API_URL = 'http://godmodelan.com/api/order/';
+const API_URL = 'http://onlineproductordering-env.eba-8kiskn5u.us-east-2.elasticbeanstalk.com/order/';
 const axios = axiosBase.create({
   baseURL: API_URL,
 });
@@ -60,7 +60,7 @@ function* getAllOrders(
     if (!response.data.success) throw response.data;
     yield put(
       new UpdateStoredOrdersAction(
-        response.data.data.orders.reverse()
+        response.data.data.reverse()
       ).toPlainObject()
     );
   } catch (err) {

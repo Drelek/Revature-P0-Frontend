@@ -16,7 +16,7 @@ import {
 import { ToastAction } from '../actions/ToastActions';
 import axiosBase from 'axios';
 
-const API_URL = 'http://godmodelan.com/api/item/';
+const API_URL = 'http://onlineproductordering-env.eba-8kiskn5u.us-east-2.elasticbeanstalk.com/item/';
 const axios = axiosBase.create({
   baseURL: API_URL,
 });
@@ -27,9 +27,10 @@ function* fetchItems(): Generator<unknown, any, AxiosResponse> {
     const response = yield call(axios.get, '');
     if (!response.data.success) throw response.data;
     yield put(
-      new UpdateStoredItemsAction(response.data.data.Items).toPlainObject()
+      new UpdateStoredItemsAction(response.data.data).toPlainObject()
     );
   } catch (err) {
+    console.log(err);
     yield put(
       new ToastAction({
         type: 'error',

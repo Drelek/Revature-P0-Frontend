@@ -37,7 +37,7 @@ export default function OrderCard({ item }: { item: IOrder }) {
         <Text style={styles.left}>Order Total:</Text>
         <Text style={styles.right}>${item.total}</Text>
       </View>
-      {Date.now() - Number(item.receipt) < 600000 && (
+      {Date.now() - Date.parse(item.timestamp) < 600000 && (
         <Button buttonStyle={styles.button} title="Cancel Order" onPress={cancelOrder} />
       )}
     </Card>

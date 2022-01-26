@@ -12,7 +12,7 @@ export enum UserActionTypes {
 
 export interface IUserAction {
   type: UserActionTypes;
-  payload: IUser | string;
+  payload: IUser | string | any;
 }
 
 export class LoginAction extends Action implements IUserAction {
@@ -62,7 +62,7 @@ export class DeleteUserAction extends Action implements IUserAction {
 export class PromoteUserAction extends Action implements IUserAction {
   public type: UserActionTypes;
   public payload: {
-    apiKey: string;
+    fromKey: string;
     promoteKey: string;
   };
 
@@ -70,7 +70,7 @@ export class PromoteUserAction extends Action implements IUserAction {
     super();
     this.type = UserActionTypes.PROMOTE;
     this.payload = {
-      apiKey,
+      fromKey: apiKey,
       promoteKey,
     };
   }
